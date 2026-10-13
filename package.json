@@ -3,6 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "homepage": "https://mykolasadl25.github.io/forms-hw/",
   "scripts": {
     "dev": "vite",
     "build": "vite build",

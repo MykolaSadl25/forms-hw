@@ -5,7 +5,7 @@ class Form extends Component {
   render() {
     const nameId = nanoid(5);
     const phoneId = nanoid(5);
-    const { onSubmit, onInput } = this.props;
+    const { onSubmit, onInput,name,number } = this.props;
     return (
       <>
         <h1>Phonebook</h1>
@@ -17,6 +17,7 @@ class Form extends Component {
             name="name"
             title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
             required
+            value={name}
             id={nameId}
             placeholder="Enter Name"
           />
@@ -28,6 +29,7 @@ class Form extends Component {
             name="number"
             title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
             required
+            value={number}
             id={phoneId}
             placeholder="Enter Phone number"
           />

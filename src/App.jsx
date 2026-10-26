@@ -14,6 +14,21 @@ class App extends Component {
     name: "",
     number: "",
   };
+  componentDidMount(){
+    let savedData = window.localStorage.getItem("contacts")
+     if (savedData) {
+      this.setState({
+        contacts:JSON.parse(savedData)
+      })
+    }
+  }
+
+
+  componentDidUpdate(_,prevState){
+    if (prevState.contacts.length !== this.state.contacts.length) {
+      window.localStorage.setItem("contacts",JSON.stringify(this.state.contacts))
+    }
+  }
 
   handleSubmit = (evt) => {
     evt.preventDefault();
@@ -29,6 +44,10 @@ class App extends Component {
     this.setState((prev) => ({
       contacts: [...prev.contacts, data],
     }));
+    this.setState({
+      name:"",
+      number:"",
+    })
   };
 
   handleInput = (evt) => {
@@ -62,7 +81,7 @@ class App extends Component {
 
     return (
       <>
-        <Form onSubmit={this.handleSubmit} onInput={this.handleInput} />
+        <Form name={this.state.name} number={this.state.number} onSubmit={this.handleSubmit} onInput={this.handleInput} />
 
         <ContactList
           data={filteredContacts}
